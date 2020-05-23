@@ -1,0 +1,68 @@
+﻿@page "{searchString?}"
+@model Proiect3.Pages.Search.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="text">
+        <h1 class="display-4">MyPhotos > Search</h1>
+    </div>
+
+<form>
+    <p>
+         Cuvant sau Tag: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FilePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileTags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Files.OrderBy(s => s.FileName))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileTags)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileDate)
+                </td>
+            </tr>
+        }
+        @if (Model.Files.Count == 1)
+        {
+            <tr>We have <strong>@Model.Files.Count</strong> record</tr>
+        }
+        else
+        {
+            <tr>We have <strong>@Model.Files.Count</strong> records</tr>
+        }
+
+    </tbody>
+</table>

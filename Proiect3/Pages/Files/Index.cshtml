@@ -1,0 +1,56 @@
+﻿@page
+@model Proiect3.Pages.Files.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text">
+    <h1 class="display-4">MyPhotos > Files</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FilePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileTags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files[0].FileDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Files.OrderBy(s=> s.FileName))
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileTags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileDate)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-page="/Folders/Index">< Back to Folders</a>
+</div>
+

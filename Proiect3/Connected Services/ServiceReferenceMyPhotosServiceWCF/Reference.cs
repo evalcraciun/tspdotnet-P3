@@ -262,6 +262,9 @@ namespace ServiceReferenceMyPhotosServiceWCF
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceFile/GetFileName", ReplyAction="http://tempuri.org/InterfaceFile/GetFileNameResponse")]
         System.Threading.Tasks.Task<ServiceReferenceMyPhotosServiceWCF.File> GetFileNameAsync(string name);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceFile/GetFilesByFolderId", ReplyAction="http://tempuri.org/InterfaceFile/GetFilesByFolderIdResponse")]
+        System.Threading.Tasks.Task<ServiceReferenceMyPhotosServiceWCF.File[]> GetFilesByFolderIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceFile/DeleteFile", ReplyAction="http://tempuri.org/InterfaceFile/DeleteFileResponse")]
         System.Threading.Tasks.Task DeleteFileAsync(string name);
         
@@ -345,6 +348,11 @@ namespace ServiceReferenceMyPhotosServiceWCF
         public System.Threading.Tasks.Task<ServiceReferenceMyPhotosServiceWCF.File> GetFileNameAsync(string name)
         {
             return base.Channel.GetFileNameAsync(name);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReferenceMyPhotosServiceWCF.File[]> GetFilesByFolderIdAsync(int id)
+        {
+            return base.Channel.GetFilesByFolderIdAsync(id);
         }
         
         public System.Threading.Tasks.Task DeleteFileAsync(string name)
